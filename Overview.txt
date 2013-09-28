@@ -1,0 +1,24 @@
+I do lots of automated layout for Sudoku books using InDesign CS5 under Windows 7.
+
+The way I work is to create the shell of the book, using master pages to place the
+empty grids in which the Sudoku puzzles or answers are placed and then adding additional
+text or page elements as needed.
+
+For my books I have a GUI that talks to a database where all the puzzle information
+is stored. This GUI then generates JavaScript that I can run in InDesign to populate
+all of the digits and other elements associated with the puzzles.
+
+My puzzles are Sudoku Variants, so instead of just putting digits in the puzzle I
+need to be able to place graphic elements at various places in the puzzle.
+
+While many items in InDesign have a "geometricBounds" property which can be used to
+determine the size and location of an element, neither tables nor the cells within
+tables support that property. 
+
+To get around this I originally just set up a 9x9 array of rectangles on the master
+page overlaying the grid table. Some of my newer puzzle types had multiple grids on
+a page so I wanted to get away from that.
+
+The functions in CreateRectangleAtCell.js provide a way to create a rectangle which
+matches the size and position of a table cell. Once this object is created, I use
+the "place(filename)" method to drop an image into that rectangle.
