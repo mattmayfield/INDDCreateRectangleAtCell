@@ -131,7 +131,7 @@ function FindTableBounds(tbl)
 */
 function FindCellBounds(tbl, row, col)
 {
-    var tblBounds = this.FindTableBounds(tbl);
+    var tblBounds = FindTableBounds(tbl);
     if (tblBounds == null) return null;
 
     // are the row and column numbers reasonable?
@@ -159,7 +159,7 @@ function FindCellBounds(tbl, row, col)
 function CreateRectangleAtCell(tbl, row, col, prop)
 {
     // get the location of the cell
-    var pos = this.FindCellBounds(tbl, row, col);
+    var pos = FindCellBounds(tbl, row, col);
     if (pos == null) return null;
     var textFrame = tbl.parent;
     var pg = textFrame.parentPage;
